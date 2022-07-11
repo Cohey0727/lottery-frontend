@@ -9,7 +9,7 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { Column, Expanded } from "components/atoms";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { SvgIconTypeMap } from "@mui/material/SvgIcon";
-import { connectWallet, createStyles } from "utils";
+import { connectWallet, createUseStyles } from "utils";
 
 type BottomAction = {
   Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
@@ -50,6 +50,8 @@ const Home = () => {
     connectWallet();
   }, []);
 
+  const styles = useStyles({ innerHeight: window.innerHeight });
+
   return (
     <Column sx={styles.root}>
       <Expanded sx={styles.body}>
@@ -77,9 +79,13 @@ const Home = () => {
   );
 };
 
-const styles = createStyles({
+type StyleProps = {
+  innerHeight: number;
+};
+
+const useStyles = createUseStyles(({ innerHeight }: StyleProps) => ({
   root: {
-    minHeight: "100vh",
+    height: innerHeight,
     overflow: "hidden",
     backgroundColor: ({ palette }) => palette.primary.main,
   },
@@ -99,6 +105,6 @@ const styles = createStyles({
       color: "white",
     },
   },
-});
+}));
 
 export default Home;
