@@ -61,6 +61,7 @@ const Home = () => {
       >
         {bottomActions.map(({ label, Icon }) => (
           <BottomNavigationAction
+            key={label}
             color="red"
             sx={styles.navigation}
             label={label}

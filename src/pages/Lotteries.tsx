@@ -1,34 +1,29 @@
-import Button, { ButtonProps } from "@mui/material/Button";
 import { Column } from "components/atoms";
+import { MainLayout } from "components/molecules";
 import { LotteryCard } from "components/organisms";
+import React from "react";
 import { Merge } from "utils";
 import { createStyles } from "utils";
 
-type BaseProps = Omit<ButtonProps, "variant">;
+type BaseProps = {};
 type OwnProps = {};
 export type LotteriesProps = Merge<BaseProps, OwnProps>;
 
 const Lotteries: React.FC<LotteriesProps> = (props) => {
   return (
-    <Column sx={styles.root}>
+    <MainLayout title={"宝くじ一覧"}>
       <Column sx={styles.inner}>
         {Array(10)
           .fill(null)
-          .map(() => (
-            <LotteryCard sx={styles.card} />
+          .map((_, index) => (
+            <LotteryCard key={index} sx={styles.card} />
           ))}
       </Column>
-    </Column>
+    </MainLayout>
   );
 };
 
 const styles = createStyles({
-  root: {
-    overflowX: "hidden",
-    overflowY: "auto",
-    height: "100%",
-    width: "100%",
-  },
   inner: {
     overflowY: "show",
     p: 2,
