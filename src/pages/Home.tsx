@@ -51,7 +51,6 @@ const Home = () => {
         <Outlet />
       </Expanded>
       <BottomNavigation
-        showLabels
         sx={styles.footer}
         value={value}
         onChange={(event, newValue) => {
@@ -75,8 +74,7 @@ const Home = () => {
 
 const styles = createStyles({
   root: {
-    height: "100vh",
-    width: "100vw",
+    minHeight: "100vh",
     overflow: "hidden",
     backgroundColor: ({ palette }) => palette.primary.main,
   },
