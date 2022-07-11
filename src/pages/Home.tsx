@@ -84,7 +84,7 @@ const styles = createStyles({
     overflow: "hidden",
   },
   footer: {
-    flex: 0,
+    flex: "0 0 auto",
   },
   navigation: {
     backgroundColor: ({ palette }) => palette.primary.main,
