@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -9,7 +9,7 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { Column, Expanded } from "components/atoms";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { SvgIconTypeMap } from "@mui/material/SvgIcon";
-import { createStyles } from "utils";
+import { connectWallet, createStyles } from "utils";
 
 type BottomAction = {
   Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
@@ -45,6 +45,11 @@ const bottomActions: BottomAction[] = [
 const Home = () => {
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    connectWallet();
+  }, []);
+
   return (
     <Column sx={styles.root}>
       <Expanded sx={styles.body}>

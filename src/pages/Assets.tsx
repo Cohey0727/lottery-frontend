@@ -1,5 +1,5 @@
 import Button, { ButtonProps } from "@mui/material/Button";
-import { Merge } from "utils";
+import { Merge, withWeb3 } from "utils";
 
 type BaseProps = Omit<ButtonProps, "variant">;
 type OwnProps = {};
@@ -13,4 +13,4 @@ const Assets: React.FC<AssetsProps> = (props) => {
   );
 };
 
-export default Assets;
+export default withWeb3(Assets);
